@@ -1,0 +1,158 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.to-do-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 1s;
+    max-width: 600px;
+    margin: 48px auto 72px;
+    padding: 24px 15px 36px;
+}
+
+.task-name {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    max-width: 400px;
+}
+
+.task-name label {
+    width: 100%;
+}
+
+
+/* BOTTOM BARS ================================= */
+.bar {
+    position: relative;
+    display: block;
+    width: 300px;
+}
+
+.bar:before,
+.bar:after {
+    content: "";
+    height: 2px;
+    width: 0;
+    bottom: 0;
+    position: absolute;
+    background: #5264AE;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+
+.bar:before {
+    left: 50%;
+}
+
+.bar:after {
+    right: 50%;
+}
+
+input:focus~.bar:before,
+input:focus~.bar:after {
+    width: 50%;
+}
+
+.task-name input[type=text] {
+    font-size: 16px;
+    padding: 10px;
+    display: block;
+    width: 300px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+}
+
+.task-name input[type=text]:focus {
+    outline: none;
+}
+
+.task-name label {
+    color: #999;
+    font-size: 18px;
+    position: absolute;
+    pointer-events: none;
+    left: 10px;
+    top: 15px;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+
+/* active state */
+.task-name input[type=text]:focus~label,
+.task-name input[type=text]:valid~label {
+    top: -15px;
+    font-size: 14px;
+    color: #5264AE;
+}
+
+.task-name input[type=button] {
+    width: 100px;
+    height: 39px;
+    font-size: 14px;
+    border-radius: 4px 0 4px 0;
+    border: 1px solid #cccccc;
+    background: #fff;
+    position: absolute;
+    right: 0;
+    top: 0;
+    outline: #5264AE;
+}
+
+.task-name input[type=button]:hover {
+    background: #5264AE;
+    cursor: pointer;
+    color: #fff;
+}
+ 
+.tasks-list {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    width: 100%;
+    margin-top: 24px;
+}
+
+.tasks-list .item {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    min-height: 48px;
+    background-color: coral;
+    font-size: 22px;
+    border-radius: 3px;
+    padding: 5px 15px;
+    margin-bottom: 15px;
+}
+ 
+
+.tasks-list .item [type="checkbox"] {
+    margin-right: 12px;
+    cursor: pointer;
+}
+
+.tasks-list .item .delete {
+    display: flex;
+    margin-left: auto;
+    height: 24px;
+    width: 24px;
+    background: url(close.png) center no-repeat;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.tasks-list .item .delete:hover {
+    transform: rotate(90deg)
+}
+
+/* .task-name input[type=text]:focus +  input[type=button], */
+.task-name input[type=text]:valid + input[type=button]{
+    border: 2px solid #5264AE;
+}
